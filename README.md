@@ -1,4 +1,4 @@
-# ME405TermProject
-Term Project for ME 405
+# ME 405 Term Project
 
-This is to understand how to build Romi
+
+
