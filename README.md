@@ -1,7 +1,14 @@
 # ME 405 Term Project
-Welcome to our ME 405 Term Project! We are Lukas Moreau and Patrick Michael, and this repository documents our work on the Romi robot time-trial challenge. Our goal is to design, build, and program an autonomous Romi robot to navigate a track efficiently and reliably. 
+Welcome to our ME 405 Term Project repository! We are **Lukas Moreau** and **Patrick Michael**, and this project documents our journey in designing, building, and programming an autonomous Romi robot for a time-trial challenge.  
 
-This repository contains all the necessary code, wiring diagrams, and documentation for our project. Below, you'll find a structured breakdown of our work, including state machine design, sensor integration, and control strategies.
+Our Romi robot integrates multiple subsystems, including:  
+- **Motor and Encoder Drivers** for precise wheel control and odometry.  
+- **IR Sensor Array** for line following with calibrated readings.  
+- **Bumper Sensors** to detect collisions and trigger recovery maneuvers.  
+- **Closed-Loop Control** using a PID-based system for accurate path correction.  
+- **Task-Based Multitasking** for efficient coordination between system components.  
+
+This repository includes our full **codebase**, **circuit diagrams**, **state machine logic**, and **test results**. Below, you’ll find a structured breakdown of our implementation, challenges, and optimizations.  
 
 ## Table of Contents
 - [Required Parts and Materials](#required-parts-and-materials)
