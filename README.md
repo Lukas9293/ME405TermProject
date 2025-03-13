@@ -1,6 +1,7 @@
 # ME 405 Term Project
 
 NOTES FROM CHARLIE, ADD MORE PICTURES, PICTURE OF ROMI, PICTURE OF FIELD, AND FSMS OBVIOUSLY, ALSO ADD A BLURB ABOUT WHAT THIS PROJECT IS FOR - CHARLIE ISNT NECCESSARILY OUR AUDIENCE
+
 Welcome to our ME 405 Term Project repository! We are **Lukas Moreau** and **Patrick Michael**, and this project documents our journey in designing, building, and programming an autonomous Romi robot for a time-trial challenge.  
 
 Our Romi robot integrates multiple subsystems, including:  
