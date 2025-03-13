@@ -50,7 +50,14 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 | 1x       | Extra Nucleo L476RG                    |
 | 1x       | Romi Chassis w/ Wheels and Casters     |
 
+# Tools Required
 
+| Tool                                          |
+|-----------------------------------------------|
+| 2mm Hex Driver (for M2.5 SHCS)               |
+| 5mm Nut Driver (for M2.5 Nuts)               |
+| Small Adjustable Wrench or Parallel Pliers   |
+| Slotted/Flat Blade Screwdriver or Small Pry Bar |
 
 ## Wiring Diagram
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
