@@ -19,6 +19,8 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 
 ## Required Parts and Materials
 
+> **Note:** The following tables are taken from the **ME 405 Lab Manuals** provided by Professor Charlie Refvem throughout the quarter.
+
 | Quantity | Item                                    | Purchase Link |
 |----------|-----------------------------------------|--------------|
 | 1x       | 120pcs 20cm Dupont Ribbon             | [Amazon](https://www.amazon.com/dp/B07GCY6CH7) |
@@ -32,7 +34,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 | 1x       | USB-Mini-B to USB-C Cable              | [Amazon](https://www.amazon.com/dp/B082F3M1HW) |
 | -        | Heat Shrink Tubing                     | [Amazon](https://www.amazon.com/dp/B01MFA3OFA) |
 
-# Miscellaneous Components
+## Miscellaneous Components
 
 | Quantity | Component                              |
 |----------|----------------------------------------|
@@ -50,7 +52,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 | 1x       | Extra Nucleo L476RG                    |
 | 1x       | Romi Chassis w/ Wheels and Casters     |
 
-# Tools Required
+## Tools Required
 
 | Tool                                          |
 |-----------------------------------------------|
