@@ -19,7 +19,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 
 ## Required Parts and Materials
 
-> **Note:** The following tables are taken from the **ME 405 Lab Manuals** provided by Professor Charlie Refvem throughout the Winter of 2025 quarter at the California Polytechnic State University in San Luis Obispo, California.
+> **Note:** The following tables are taken from the **ME 405 Lab Manuals** provided by Professor Charlie Refvem throughout the Winter quarter of 2025 at the California Polytechnic State University in San Luis Obispo.
 
 | Quantity | Item                                    | Purchase Link |
 |----------|-----------------------------------------|--------------|
