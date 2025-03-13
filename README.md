@@ -15,7 +15,7 @@ This repository contains all the necessary code, wiring diagrams, and documentat
 ## Wiring Diagram
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
 
-##Shared Variable Table
+## Shared Variable Table
 Shared Variables (via task_share.py):
 
 Encoder Counts and Velocities:
