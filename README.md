@@ -12,10 +12,15 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 
 ## Table of Contents
 - [Required Parts and Materials](#required-parts-and-materials)
+- [Miscellaneous Components](#Miscellaneous-Components)
+- [Tools Required](#Tools-Required)
 - [Wiring Diagram](#wiring-diagram)
-- [Finite State Machines](#finite-state-machines)
-- [State Transition Diagrams](#state-transition-diagrams)
-- [What Each Class Does](#what-each-class-does)
+- [What's Unique about Our Design?](What's-Unique-about-Our-Design?)
+- [System Overview](System-Overview)
+- [Task Diagram & Descriptions](#Task-Diagram-&-Descriptions)
+- [Finite State Machines (FSMs)](#Finite-State-Machines-(FSMs))
+- [Using our Code](#Using-our-Code)
+- [Conclusion](Conclusion)
 
 ## Required Parts and Materials
 
@@ -209,14 +214,14 @@ This task divides the robot’s journey into sections based on elapsed left enco
   - **Parameters:**  
     - Base commands: left = –5, right = –20  
     - Offsets: left offset = 0, right offset = +5  
-  - **Transition:** When elapsed ticks ≥ 37375, move directly to State 10.
+  - **Transition:** When elapsed ticks ≥ 37375, move directly to State 9.
 
 - **State 9 ("Straight to Finish"):**
   - **Condition:** 37375 ≤ elapsed ticks < 40000.
   - **Parameters:**  
     - Base commands: left = –10, right = –20  
     - Offsets: left –5, right +5  
-  - **Transition:** When elapsed ticks ≥ 40000, transition to State 11.
+  - **Transition:** When elapsed ticks ≥ 40000, transition to State 10.
 
 - **State 10 ("Stop"):**
   - **Condition:** Elapsed ticks ≥ 40000.
