@@ -19,6 +19,20 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 
 ## Required Parts and Materials
 
+| Quantity | Item                                    | Purchase Link |
+|----------|-----------------------------------------|--------------|
+| 1x       | 120pcs 20cm Dupont Ribbon             | [Amazon](https://www.amazon.com/dp/B07GCY6CH7) |
+| 1x       | HC-05 Bluetooth Module                | [Amazon](https://www.amazon.com/dp/B01MQKX7VP) |
+| 6x       | NiMH AA Battery                        | [Amazon](https://www.amazon.com/dp/B0D2JCY87L) |
+| 1x       | NiMH Battery Charger                   | [Amazon](https://www.amazon.com/dp/B00JHKSLM8) |
+| 2x       | 1x6 Pin Dupont Housing                 | [Pololu](https://www.pololu.com/product/1905) |
+| 2x       | 2x6 Pin Dupont Housing                 | [Pololu](https://www.pololu.com/product/1914) |
+| 2x       | 2x13 Pin Dupont Housing                | [Pololu](https://www.pololu.com/product/1969) |
+| 1x       | IR Reflectance Sensors                 | [Pololu](https://www.pololu.com/category/123) |
+| 1x       | USB-Mini-B to USB-C Cable              | [Amazon](https://www.amazon.com/dp/B082F3M1HW) |
+| -        | Heat Shrink Tubing                     | [Amazon](https://www.amazon.com/dp/B01MFA3OFA) |
+
+
 ## Wiring Diagram
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
 
