@@ -31,6 +31,19 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 | 1x       | IR Reflectance Sensors                 | [Pololu](https://www.pololu.com/category/123) |
 | 1x       | USB-Mini-B to USB-C Cable              | [Amazon](https://www.amazon.com/dp/B082F3M1HW) |
 | -        | Heat Shrink Tubing                     | [Amazon](https://www.amazon.com/dp/B01MFA3OFA) |
+| 4x       | M2.5 x 8mm Standoff                    | - |
+| 4x       | M2.5 x 10mm Standoff                   | - |
+| 4x       | M2.5 x 30mm Standoff                   | - |
+| 4x       | M2.5 x 6mm Socket Head Cap Screw       | - |
+| 4x       | M2.5 x 8mm Socket Head Cap Screw       | - |
+| 4x       | M2.5 x 10mm Socket Head Cap Screw      | - |
+| 8x       | M2.5 Nylon Lock Nuts                   | - |
+| 8x       | M2.5 Nylon Washer                      | - |
+| 1x       | Acrylic Romi-to-Shoe Adapter           | - |
+| 1x       | BNO055 IMU Breakout Board              | - |
+| 1x       | Modified Shoe of Brian                 | - |
+| 1x       | Extra Nucleo L476RG                    | - |
+| 1x       | Romi Chassis w/ Wheels and Casters     | - |
 
 
 ## Wiring Diagram
