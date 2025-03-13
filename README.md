@@ -55,11 +55,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 ## Wiring Diagram
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
 
-# Line-Following and Collision-Aware Robot Control System
-
-This project implements a cooperative multitasking system for a robot that follows a line on a track and performs backup maneuvers when collisions or stalls are detected. The system integrates multiple hardware drivers, a closed-loop PID controller, and a set of tasks coordinated via a cooperative scheduler.
-
-## Overview
+## System Overview
 
 The system is composed of several key components:
 
@@ -85,7 +81,7 @@ The system is composed of several key components:
   - **Bumper Task:** Monitors for collisions or prolonged stationary conditions and initiates a backup maneuver if needed.
   - **Switch Task:** Toggles between "Running" and "Stopped" modes using a physical button and resets the encoder baseline.
 
-## Detailed Task Diagram & Data Flow
+## Task Diagram & Descriptions
 
 ### Hardware Interfaces and Drivers
 
@@ -194,18 +190,16 @@ This task divides the robot’s journey into sections based on elapsed left enco
     - Offsets: left offset = 0, right offset = +5  
   - **Transition:** When elapsed ticks ≥ 37375, move directly to State 10.
 
-- **State 10 ("Straight to Finish"):**
+- **State 9 ("Straight to Finish"):**
   - **Condition:** 37375 ≤ elapsed ticks < 40000.
   - **Parameters:**  
     - Base commands: left = –10, right = –20  
     - Offsets: left –5, right +5  
   - **Transition:** When elapsed ticks ≥ 40000, transition to State 11.
 
-- **State 11 ("Stop"):**
+- **State 10 ("Stop"):**
   - **Condition:** Elapsed ticks ≥ 40000.
   - **Action:** Set both motor commands to 0 (stop the robot).
-
-> **Note:** Some commented-out states are omitted, so only the active states above define the current FSM.
 
 ### 2. Bumper Task FSM (Backup Maneuver)
 
@@ -237,10 +231,10 @@ The switch task monitors a button to toggle the robot's operational state:
   - **Action:** Normal operation with active closed-loop control.
   - **Transition:** On button press, toggle back to Stopped.
 
-## Getting Started
+## Using our Code
 
 1. **Hardware Setup:**  
-   - Ensure proper connections for motors, encoders, IR sensor array, bumpers, and the switch.
+   - Ensure proper connections for motors, encoders, IR sensor array, bumpers, and the switch as defined abve.
    - Confirm the pin assignments in the source files match your hardware configuration.
 
 2. **Software Setup:**  
