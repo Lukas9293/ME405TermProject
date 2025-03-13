@@ -64,7 +64,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 ## Wiring Diagram
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
 
-## info about robot CHANGE THIS TITLE
+## What's Unique about Our Design?
 
 Our main code is designed to integrate multiple sensor inputs and control strategies into a single cohesive system. At its core, the closed-loop task uses a PID controller that compares the IR sensor’s weighted centroid to a desired setpoint (typically 0.5, indicating a centered line). The error computed—setpoint minus the filtered sensor reading—is then scaled by a proportional gain (kp) and, where needed, supplemented with integral and derivative terms. A crucial part of this process is the use of a low-pass filter controlled by the variable alpha. Alpha is a constant (typically between 0 and 1) that smooths sensor readings by blending the previous filtered value with the new measurement rather than completely replacing it. For example, if alpha is 0.8, then 80% of the previous value is retained and only 20% of the new value is added in. This gradual update filters out rapid fluctuations or noise, resulting in a more stable value for the PID controller. Essentially, alpha controls the "memory" of the filter—the higher the alpha, the slower the filter responds to sudden changes.
 
