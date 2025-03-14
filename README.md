@@ -419,3 +419,5 @@ The encoder tasks, IR sensor task, and motor control tasks are not shown here be
 This project demonstrates a modular design for robotic control using cooperative multitasking. The clear separation of hardware interfaces, shared data, and FSM-based control in the closed-loop, bumper, and switch tasks allows for easy modification and extension. Adjust the PID gains and task parameters as needed to fine-tune the robot’s behavior on different track sections. 
 
 In our best run our raw time was 61 seconds, but with one cup hit our processed time was 56 seconds. We hope you enjoy this demonstration linked below. 
+Watch our Romi robot navigate the track:  
+📹 **[Click here to watch the video](https://drive.google.com/file/d/1zt__Re2_fRIx6b6qI5mVxyfNvqDVUCA7/view?usp=sharing)**
