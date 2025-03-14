@@ -76,7 +76,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 
 ## Romi Assembly
 > **Note:** The following manual is taken from the **ME 405 Lab Manuals** provided by Professor Charlie Refvem throughout the Winter quarter of 2025 at the California Polytechnic State University in San Luis Obispo.
-**[Download ME 405 Term Project Manual (PDF)](https://github.com/YOUR-USERNAME/YOUR-REPO/blob/main/docs/ME405_2252_Term_Project_0x01.pdf?raw=true)**
+**[Download ME 405 Term Project Manual (PDF)](file:///C:/Users/patrick/Downloads/ME405_2252_Term_Project_0x01%20(2).pdf)**
 ## Wiring Diagram
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
 
