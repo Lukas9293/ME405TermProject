@@ -19,16 +19,21 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 
 ## Table of Contents
 - [Required Parts and Materials](#required-parts-and-materials)
-- [Miscellaneous Components](#Miscellaneous-Components)
-- [Tools Required](#Tools-Required)
+- [Miscellaneous Components](#miscellaneous-components)
+- [Tools Required](#tools-required)
+- [Romi Assembly](#romi-assembly)
 - [Wiring Diagram](#wiring-diagram)
-- [The Challenge](#The-Challenge)
-- [What's Unique about Our Design?](What's-Unique-about-Our-Design?)
-- [System Overview](System-Overview)
-- [Task Diagram & Descriptions](#Task-Diagram-&-Descriptions)
-- [Finite State Machines (FSMs)](#Finite-State-Machines-(FSMs))
-- [Using our Code](#Using-our-Code)
-- [Conclusion](Conclusion)
+- [The Challenge](#the-challenge)
+- [What's Unique about Our Design?](#whats-unique-about-our-design)
+- [System Overview](#system-overview)
+- [Task Diagram & Descriptions](#task-diagram--descriptions)
+- [Finite State Machines (FSMs)](#finite-state-machines-fsms)
+  - [Closed-Loop Task FSM](#closed-loop-task-fsm-line-following-sections)
+  - [Bumper Task FSM](#bumper-task-fsm-backup-maneuver)
+  - [Switch Task FSM](#switch-task-fsm-operational-state-toggle)
+- [Using Our Code](#using-our-code)
+- [Conclusion](#conclusion)
+
 
 ## Required Parts and Materials
 
