@@ -32,6 +32,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
   - [Closed-Loop Task FSM](#closed-loop-task-fsm-line-following-sections)
   - [Bumper Task FSM](#bumper-task-fsm-backup-maneuver)
   - [Switch Task FSM](#switch-task-fsm-operational-state-toggle)
+  - [Mastermind FSM](Mastermind)
 - [Using Our Code](#using-our-code)
 - [Conclusion and Results](#conclusion-and-Results)
 
@@ -395,7 +396,7 @@ The switch task monitors the blue button to toggle the robot's operational state
   - **Action:** Normal operation with active closed-loop control.
   - **Transition:** On button press, toggle back to Stopped.
 
-### Mastermind FSM 
+### 4. Mastermind FSM 
 
 Our "mastermind" FSM serves as the central control mechanism that governs transitions between the three primary FSM tasks: closed-loop, bumper, and switch. It continuously evaluates key inputs—such as IR sensor data, encoder readings, bumper activations, and the switch state—and makes real-time decisions about which subsystem should control the robot at any given moment. This design allows the system to fluidly switch among normal line following (closed-loop), collision recovery (bumper), and operational toggling (switch) based on the prevailing conditions, ensuring that the robot adapts quickly and appropriately to dynamic environments.
 
