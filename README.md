@@ -127,6 +127,34 @@ The system is composed of several key components:
   - **Closed-Loop Task:** Uses encoder data and the IR sensor centroid to determine the robot’s “section” of the track, update PID parameters, and generate motor commands.
   - **Bumper Task:** Monitors for collisions or prolonged stationary conditions and initiates a backup maneuver if needed.
   - **Switch Task:** Toggles between "Running" and "Stopped" modes using a physical button and resets the encoder baseline.
+## Kinematics of the Romi Robot  
+![image](https://github.com/user-attachments/assets/84f4025e-b7e6-4131-a59e-f8e72ac836a8)
+
+The kinematics of the Romi robot are based on a **differential drive model**, where the robot’s motion is determined by the velocities of its two independently controlled wheels. The first diagram establishes the relationship between the left and right wheel velocities (\(V_L\) and \(V_R\)) and the robot’s angular velocity \(\Omega\). Using the difference in wheel velocities and the track width \(w\), we derive the angular velocity as:  
+
+\[
+\Omega = \frac{V_R - V_L}{w}
+\]
+
+The **linear velocity** of the robot’s center is the average of the wheel velocities:
+
+\[
+V = \frac{V_L + V_R}{2}
+\]
+
+The second diagram defines the **global motion equations** for the robot in terms of its position \((X_R, Y_R)\) and heading \(\Psi_R\). The robot’s velocity components in the global frame are:
+
+\[
+\dot{X} = V \cos \Psi_R
+\]
+\[
+\dot{Y} = V \sin \Psi_R
+\]
+\[
+\dot{\Psi}_R = \Omega
+\]
+
+These equations describe how the robot moves in 2D space based on its wheel velocities, allowing for trajectory planning and control.
 
 ## Task Diagram & Descriptions
 
