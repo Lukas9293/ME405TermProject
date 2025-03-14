@@ -399,7 +399,7 @@ The switch task monitors the blue button to toggle the robot's operational state
 ### 4. Mastermind FSM 
 
 ```mermaid
-stateDiagram-v2
+Mastermind
     [*] --> Init
     Init --> Switch : Initialize
     Switch --> ClosedLoop : Toggle to Running\n(normal conditions)
@@ -408,6 +408,13 @@ stateDiagram-v2
     ClosedLoop --> Switch : Switch pressed
     Bumper --> ClosedLoop : Recovery complete\n(no bumper trigger)
     Bumper --> Switch : Switch pressed
+
+    %% Apply style to make states elliptical (adjust rx and ry values for curvature)
+    style Init fill:#f9f,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style Switch fill:#ccf,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style ClosedLoop fill:#cfc,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style Bumper fill:#fcf,stroke:#333,stroke-width:2px,rx:30,ry:30
+
 ```
 
 Our "mastermind" FSM serves as the central control mechanism that governs transitions between the three primary FSM tasks: closed-loop, bumper, and switch. It continuously evaluates key inputs—such as IR sensor data, encoder readings, bumper activations, and the switch state—and makes real-time decisions about which subsystem should control the robot at any given moment. This design allows the system to fluidly switch among normal line following (closed-loop), collision recovery (bumper), and operational toggling (switch) based on the prevailing conditions, ensuring that the robot adapts quickly and appropriately to dynamic environments.
