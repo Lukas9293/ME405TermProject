@@ -399,7 +399,7 @@ The switch task monitors the blue button to toggle the robot's operational state
 ### 4. Mastermind FSM 
 
 ```mermaid
-Mastermind
+stateDiagram-v2
     [*] --> Init
     Init --> Switch : Initialize
     Switch --> ClosedLoop : Toggle to Running\n(normal conditions)
