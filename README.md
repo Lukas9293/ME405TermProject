@@ -80,7 +80,7 @@ Our wiring approach assigns distinct microcontroller pins to each subsystem to e
 ## The Challenge
 ![image](https://github.com/user-attachments/assets/a2598f44-e3f5-4b4b-866d-a08db7cbd40b)
 
-Our robot had to autonomously navigate a complex race track that featured multiple checkpoints, a start/finish line, a wall, and a structure outlined in the grid. The challenge was set up as a time trial where hitting each checkpoint in sequence was essential, and strategically placed cups offered a bonus—knocking a cup over would subtract 5 seconds from our total time. Our goal was to secure the bonus from both cups, though we consistently managed to get one. In addition to these elements, the structure on the track required the robot to precisely maneuver through various turns and corridors, adding an extra layer of difficulty to the competition.
+Our robot had to autonomously navigate a complex race track that featured multiple checkpoints, a start/finish line, a wall, and a structure outlined in the grid. The challenge was set up as a time trial where hitting each checkpoint in sequence was essential, and strategically placed cups offered a bonus—knocking a cup over would subtract 5 seconds from our total time. Our goal was to secure the bonus from both cups and get to the finish line as fast as possible. In addition to these elements, the structure on the track required the robot to precisely maneuver through various turns and corridors, adding an extra layer of difficulty to the competition.
 
 ## What's Unique about Our Design?
 
@@ -164,7 +164,9 @@ All tasks are organized in a cooperative multitasking system where each task per
 ### 1. Closed-Loop Task FSM (Line-Following Sections)
 ![image](https://github.com/user-attachments/assets/61969081-0c84-44f8-ae0a-d0ebd55d8d29)
 
-This task divides the robot’s journey into sections based on elapsed left encoder ticks. Each section corresponds to a state with its own set of motor commands and PID tuning:
+This task divides the robot’s journey into sections based on elapsed left encoder ticks. Each section corresponds to a state with its own set of motor commands and PID tuning, below we have each of the state parameters that were modified between states. We decided to seperate the path by encoder ticks because we realized we wanted different parameters at different points in the map. For example, while the final project skips the diamond by setting the gains to 0(state 2), initially this idea was implemented because we wanted to crank the gain very high so that we could line follow the entire diamond. However, we found that we could more consistently get through the diamond if we attempted to drive through it without the line follower rather than use the line follower and make the abrupt turns. The state machine detailed above lists the effects of changing states changes the parameters, these parameters are detailed below. 
+
+Notably one of the problems we had was the marriage of the bumper fsm and the closed loop task fsm. This fsm is based on left encoder ticks, when we reach a certain value we move to the next state. A problem with this is that when the bunmpers would be hit, they would reverse. This would decrease the encoder counts and put us into a previous state. Often this was precisely the thing that would save us, Romi would get stuck, back up and try again. Specifically where this was a problem though, was leaving the structure. At the end of the structure we have a right turn out of the structure(state 4). This was coded in with encoder counts. If romi got stuck anytime after state 4 and reversed back into the encoder range of state 4, he would make that right turn again, no matter where he actually was. A problem that we ran into was romi would make the right turn, veer into something and get stuck, then reverse, enter state 4 again and promptly turn right. This led romi backwards back into the structure away from the finish line. Funny enough, this code was robust enough to have this exact thing happen on our best run. Romi bounced his way through the structure, made the turn and got stuck, then turned around in the exact opposite direction. Romi, however, continued to bounce around and entered state 4 again a couple times as he kept running into things and arrived prompty where he was supposed to be, though he was rather late. He then sensed the wall, and took a wide berth around it to hit the cup for -5 seconds bonus, and arrived promptly at the finish line. This style of coding was not common in our class, and we were the only group to have active bump sensors. We think it makes romi more "aware" and reactive of his environment, rather than being "hard-coded" like many other groups. Allowing romi to explore rather than fixing his every move was, in the end, what guided us to the finish line anyway. 
 
 - **State 1 ("Straight"):**
   - **Condition:** Elapsed ticks < 6700.
@@ -242,7 +244,7 @@ This task divides the robot’s journey into sections based on elapsed left enco
 ### 2. Bumper Task FSM (Backup Maneuver)
 ![image](https://github.com/user-attachments/assets/166881b6-3cb9-496e-a63e-25af21eda6c5)
 
-The bumper task monitors the bumper sensors and the encoder velocities:
+The bumper task monitors the bumper sensors and the encoder velocities. Depending on which bumper is pressed, the bumper task activates, reverses, and adds a wheel offset. If a far left bumper is pressed the robot will reverse and make a slight adjustment to the right. If a center right bumper is pressed, it will reverse, and make a large adjustment to the left. Thus was mainly useful when navigating the structure, though this was active at all times. This state machine allowed us to navigate the course and the structure without our IMU, as it was not functional. We could enter the structure at irregular angles, and by bumping into pillars, we could course correct to get to the end of the structure. This was also useful when navigating the wall, as we already had our bumpers programmed, it was only a slight edit to make it hit the wall and go around it. It is detailed below.
 
 - **Normal Operation:**
   - **Action:** Continuously check:
@@ -261,7 +263,7 @@ The bumper task monitors the bumper sensors and the encoder velocities:
 ### 3. Switch Task FSM (Operational State Toggle)
 ![image](https://github.com/user-attachments/assets/b14c8f5c-7003-4bb9-8f47-f850b90a49c6)
 
-The switch task monitors a button to toggle the robot's operational state:
+The switch task monitors the blue button to toggle the robot's operational state. When it was pressed it would start at state 1 above by reseting the encoder ticks. If it was pressed again it would stop the motors. This made it easy to reset the robot and the code between different attempts. The switch task states are detailed below.
 
 - **Stopped (switch_state = 0):**
   - **Action:** Robot remains inactive (closed-loop task forces motor commands to 0).
