@@ -11,6 +11,8 @@ Our Romi robot integrates multiple subsystems, including:
 - **Closed-Loop Control** using a PID-based system for accurate path correction.  
 - **Task-Based Multitasking** for efficient coordination between system components.  
 
+INSERT PHOTO OF ROMI HERE
+
 This repository includes our full **codebase**, **circuit diagrams**, **state machine logic**, and **test results**. Below, you’ll find a structured breakdown of our implementation, challenges, and optimizations.  
 
 ## Table of Contents
@@ -18,6 +20,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 - [Miscellaneous Components](#Miscellaneous-Components)
 - [Tools Required](#Tools-Required)
 - [Wiring Diagram](#wiring-diagram)
+- [The Challenge](#The-Challenge)
 - [What's Unique about Our Design?](What's-Unique-about-Our-Design?)
 - [System Overview](System-Overview)
 - [Task Diagram & Descriptions](#Task-Diagram-&-Descriptions)
@@ -73,6 +76,10 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 ![image](https://github.com/user-attachments/assets/d3d4d17b-7e4a-4be0-a88a-0e2bdd16e1dd)
 
 Our wiring approach assigns distinct microcontroller pins to each subsystem to ensure clear, organized connections. The left and right motors each receive a PWM signal (pins A9 and B1, respectively) and a direction pin (C7 for left, B15 for right), with additional sleep/enable pins (B6 for left, B2 for right) controlling power states. Quadrature encoders attach to dedicated timer channels—left encoder on A15 and B3 (Timer 2), right encoder on A0 and A1 (Timer 5)—providing both cumulative position and velocity data. An eight-channel IR sensor array spans analog pins PC4, PA5, PC5, PA6, PB0, PC1, PA4, and PC0, enabling precise centroid calculations for line-following. Three active-low bumper sensors on each side feed into digital inputs (PB13, PB14, PB4 for left; PB7, PC2, PC3 for right), detecting collisions or misalignments. Although a BNO055 IMU is included on the board, our current design does not use its outputs, focusing instead on IR-based line tracking and bumper feedback for dynamic maneuvering. All components are grounded, and power is distributed appropriately to ensure stable operation across motors, encoders, and sensors.
+
+## The Challenge
+TALK ABOUT WHAT WE HAD TO DO 
+INSERT PHOTO OF TRACK HERE
 
 ## What's Unique about Our Design?
 
