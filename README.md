@@ -441,4 +441,4 @@ This project demonstrates a modular design for robotic control using cooperative
 
 In our best run our raw time was 61 seconds, but with one cup hit our processed time was 56 seconds. We hope you enjoy this demonstration linked below. 
 Watch our Romi robot navigate the track:  
-📹 **[Click here to watch the video]([YOUR_GOOGLE_DRIVE_LINK](https://drive.google.com/file/d/1zt__Re2_fRIx6b6qI5mVxyfNvqDVUCA7/view?usp=sharing))**
+📹 **[Click here to watch the video](https://drive.google.com/file/d/1zt__Re2_fRIx6b6qI5mVxyfNvqDVUCA7/view?usp=sharing)**
