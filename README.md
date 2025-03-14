@@ -130,31 +130,8 @@ The system is composed of several key components:
 ## Kinematics of the Romi Robot  
 ![image](https://github.com/user-attachments/assets/84f4025e-b7e6-4131-a59e-f8e72ac836a8)
 
-The kinematics of the Romi robot are based on a **differential drive model**, where the robot’s motion is determined by the velocities of its two independently controlled wheels. The first diagram establishes the relationship between the left and right wheel velocities (\(V_L\) and \(V_R\)) and the robot’s angular velocity \(\Omega\). Using the difference in wheel velocities and the track width \(w\), we derive the angular velocity as:  
-
-\[
-\Omega = \frac{V_R - V_L}{w}
-\]
-
-The **linear velocity** of the robot’s center is the average of the wheel velocities:
-
-\[
-V = \frac{V_L + V_R}{2}
-\]
-
-The second diagram defines the **global motion equations** for the robot in terms of its position \((X_R, Y_R)\) and heading \(\Psi_R\). The robot’s velocity components in the global frame are:
-
-\[
-\dot{X} = V \cos \Psi_R
-\]
-\[
-\dot{Y} = V \sin \Psi_R
-\]
-\[
-\dot{\Psi}_R = \Omega
-\]
-
-These equations describe how the robot moves in 2D space based on its wheel velocities, allowing for trajectory planning and control.
+The Romi robot follows a differential drive kinematics model, where its motion is governed by the independent velocities of the left and right wheels. The robot's overall linear velocity is determined as the average of these two wheel velocities, while its angular velocity is dictated by their difference relative to the track width. These relationships allow the robot to execute both straight-line motion and turns by adjusting the speed of each wheel. The second diagram extends this analysis to global motion, expressing the robot’s position 
+(𝑋)𝑅,(𝑌)𝑅, and orientation Ψ𝑅. In a world-fixed coordinate system. By resolving velocity components in this global frame, the equations describe how the robot moves and rotates in response to different wheel inputs. This formulation is essential for trajectory planning, enabling precise control over the robot’s navigation in a structured environment.
 
 ## Task Diagram & Descriptions
 
