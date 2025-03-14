@@ -409,11 +409,11 @@ stateDiagram-v2
     Bumper --> ClosedLoop : Recovery complete\n(no bumper trigger)
     Bumper --> Switch : Switch pressed
 
-    %% Apply style to make states elliptical (adjust rx and ry values for curvature)
-    style Init fill:#f9f,stroke:#333,stroke-width:2px,rx:30,ry:30
-    style Switch fill:#ccf,stroke:#333,stroke-width:2px,rx:30,ry:30
-    style ClosedLoop fill:#cfc,stroke:#333,stroke-width:2px,rx:30,ry:30
-    style Bumper fill:#fcf,stroke:#333,stroke-width:2px,rx:30,ry:30
+    %% Elliptical styling with no background color
+    style Init fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style Switch fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style ClosedLoop fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style Bumper fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
 
 ```
 
