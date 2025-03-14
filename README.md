@@ -12,9 +12,8 @@ Our Romi robot integrates multiple subsystems, including:
 - **Task-Based Multitasking** for efficient coordination between system components.  
 
 <p align="center">
-    <img src="https://github.com/YOUR-USERNAME/YOUR-REPO/blob/main/IMG_3669.jpg?raw=true" width="30%">
-    <img src="https://github.com/YOUR-USERNAME/YOUR-REPO/blob/main/IMG_3672.jpg?raw=true" width="30%">
-    <img src="https://github.com/YOUR-USERNAME/YOUR-REPO/blob/main/IMG_3670.jpg?raw=true" width="30%">
+    <![IMG_3669](https://github.com/user-attachments/assets/78ada17a-b402-4e46-81f2-c3dfeb1a3216)>
+    <![IMG_3672](https://github.com/user-attachments/assets/cba45df2-9e07-4bb1-a1c1-3a7940507cc8)>
 </p>
 
 This repository includes our full **codebase**, **circuit diagrams**, **state machine logic**, and **test results**. Below, you’ll find a structured breakdown of our implementation, challenges, and optimizations.  
