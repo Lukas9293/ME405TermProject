@@ -215,6 +215,7 @@ The Romi robot follows a differential drive kinematics model, where its motion i
 All tasks are organized in a cooperative multitasking system where each task periodically yields control. The scheduler runs tasks based on priorities and timing constraints defined by each task's period.
 
 
+```mermaid
 flowchart LR
   %% Sensors
   subgraph Sensors
@@ -274,7 +275,7 @@ flowchart LR
 
   D --> L
   L --> S
-
+```
 
 
 ## Finite State Machines (FSMs)
