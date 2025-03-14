@@ -239,6 +239,8 @@ flowchart LR
   D --> L
   L --> S
 ```
+The task diagram provides a clear, visual overview of our robot's control system architecture. It maps out how various sensors—such as the left and right encoders, IR sensor array, bumper sensors, and switch button—feed data into dedicated tasks. Each task, including encoder tasks, the IR sensor task, closed-loop task, bumper task, switch task, and motor control tasks, interacts with shared variables to exchange real-time information like encoder counts, velocities, the computed IR centroid, and motor commands. The diagram also shows how motor drivers receive commands from the motor control tasks, ultimately driving the robot's movement. This structured visualization highlights the cooperative multitasking approach we employ, illustrating the seamless integration of sensor inputs, data processing, and actuator control that allows our robot to navigate the course dynamically and adaptively.
+
 ### Hardware Interfaces and Drivers
 
 - **Motor Driver (`motor.py`):**
