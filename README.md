@@ -26,6 +26,8 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 - [The Challenge](#the-challenge)
 - [What's Unique about Our Design?](#whats-unique-about-our-design)
 - [System Overview](#system-overview)
+- [IR Centroid and PID Calculations and explanation](IR-Centroid-and-PID-Calculations-and-explanation)
+- [Kinematics of the Romi Robot](Kinematics-of-the-Romi-Robot)
 - [Task Diagram & Descriptions](#task-diagram--descriptions)
 - [Finite State Machines (FSMs)](#finite-state-machines-fsms)
   - [Closed-Loop Task FSM](#closed-loop-task-fsm-line-following-sections)
@@ -127,6 +129,45 @@ The system is composed of several key components:
   - **Closed-Loop Task:** Uses encoder data and the IR sensor centroid to determine the robot’s “section” of the track, update PID parameters, and generate motor commands.
   - **Bumper Task:** Monitors for collisions or prolonged stationary conditions and initiates a backup maneuver if needed.
   - **Switch Task:** Toggles between "Running" and "Stopped" modes using a physical button and resets the encoder baseline.
+
+## IR Centroid and PID Calculations and explanation
+
+Our system leverages an IR sensor array with eight sensors arranged from left to right to continuously determine the line’s position. Each sensor’s raw reading is first normalized using its specific calibration range with the formula:
+
+  `normalized_value[i] = (raw_value[i] - calibration_min[i]) / (calibration_max[i] - calibration_min[i])`
+
+This produces values between 0 and 1. We then apply a sensitivity factor to emphasize the differences between sensor outputs. For example, the adjusted value is computed as:
+
+  `adjusted_value[i] = 0.5 + sensitivity * (normalized_value[i] - 0.5)`
+
+(with the result clamped between 0 and 1). Each sensor is assigned a position index normalized between 0 (leftmost) and 1 (rightmost). The overall line position, or centroid, is calculated as the weighted average:
+
+  `centroid = (Σ (adjusted_value[i] * position[i])) / (Σ adjusted_value[i])`
+
+A centroid value near 0.5 indicates that the line is centered under the sensor array.
+
+This centroid measurement serves as the input for our PID controller. The controller compares the centroid to a desired setpoint (typically 0.5) to compute the error. The proportional term is given by:
+
+  `P = kp * error`
+
+which provides an immediate correction proportional to the deviation. The integral term, computed as:
+
+  `I = ki * ∑(error * dt)`
+
+accumulates the error over time to eliminate steady-state offsets, and the derivative term:
+
+  `D = kd * (error_change_rate)`
+
+predicts future errors by evaluating the rate of change of the error. Thus, the overall correction is:
+
+  `Correction = kp * error + ki * integral + kd * derivative`
+
+To prevent the controller from reacting too aggressively to transient noise, our sensor readings are passed through a low-pass filter controlled by the parameter **alpha**. With an **alpha** value (typically around 0.8), the new filtered reading is calculated as:
+
+  `filtered_value = alpha * previous_filtered_value + (1 - alpha) * new_reading`
+
+This means that 80% of the previous filtered value is retained and only 20% of the new reading is incorporated, smoothing out sudden spikes and ensuring that only consistent changes affect the PID calculations. The final PID output is then used to adjust the motor commands, steering the robot back onto the line. This mathematically robust and dynamically filtered approach allows our robot to maintain precise line following even under varying conditions.
+
 ## Kinematics of the Romi Robot  
 ![image](https://github.com/user-attachments/assets/84f4025e-b7e6-4131-a59e-f8e72ac836a8)
 
