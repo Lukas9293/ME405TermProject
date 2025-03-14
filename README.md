@@ -27,6 +27,7 @@ This repository includes our full **codebase**, **circuit diagrams**, **state ma
 - [IR Centroid and PID Calculations and explanation](IR-Centroid-and-PID-Calculations-and-explanation)
 - [Kinematics of the Romi Robot](Kinematics-of-the-Romi-Robot)
 - [Task Diagram & Descriptions](#task-diagram--descriptions)
+  - [Task Diagram](Task-Diagram)
 - [Finite State Machines (FSMs)](#finite-state-machines-fsms)
   - [Closed-Loop Task FSM](#closed-loop-task-fsm-line-following-sections)
   - [Bumper Task FSM](#bumper-task-fsm-backup-maneuver)
@@ -175,45 +176,7 @@ The Romi robot follows a differential drive kinematics model, where its motion i
 
 ## Task Diagram & Descriptions
 
-### Hardware Interfaces and Drivers
-
-- **Motor Driver (`motor.py`):**
-  - Uses PWM for speed control.
-  - Sets motor direction via a digital pin.
-  - Enables/disables the motor driver via a sleep pin.
-
-- **Encoder (`encoder.py`):**
-  - Uses hardware timers configured in encoder mode.
-  - Updates cumulative encoder counts and computes instantaneous velocities.
-  
-- **IR Sensor (`ir_sensor.py`):**
-  - Reads and normalizes eight ADC channels.
-  - Applies a sensitivity adjustment and computes a weighted centroid for line position.
-
-- **Bumper (`bumper.py`):**
-  - Reads one or more digital bumper sensors.
-  - Provides functions to check for pressed sensors.
-
-- **Closed-Loop Controller (`closed_loop.py`):**
-  - Implements a PID algorithm for line following.
-  - Primarily used as a proportional controller with possible tuning of integral and derivative gains.
-
-### Shared Variables
-
-- **Encoder Data:**  
-  - `left_encoder_count`, `right_encoder_count` store cumulative counts.
-  - `left_velocity`, `right_velocity` store the computed velocities.
-- **Motor Commands:**  
-  - `left_motor_command` and `right_motor_command` hold the latest motor effort values.
-- **IR Sensor Centroid:**  
-  - `ir_line_centroid` holds the computed weighted average (line position).
-- **Switch State:**  
-  - `switch_state` toggles between 0 (Stopped) and 1 (Running).
-
-### Task Scheduler
-
-All tasks are organized in a cooperative multitasking system where each task periodically yields control. The scheduler runs tasks based on priorities and timing constraints defined by each task's period.
-
+### Task Diagram
 
 ```mermaid
 flowchart LR
@@ -276,6 +239,44 @@ flowchart LR
   D --> L
   L --> S
 ```
+### Hardware Interfaces and Drivers
+
+- **Motor Driver (`motor.py`):**
+  - Uses PWM for speed control.
+  - Sets motor direction via a digital pin.
+  - Enables/disables the motor driver via a sleep pin.
+
+- **Encoder (`encoder.py`):**
+  - Uses hardware timers configured in encoder mode.
+  - Updates cumulative encoder counts and computes instantaneous velocities.
+  
+- **IR Sensor (`ir_sensor.py`):**
+  - Reads and normalizes eight ADC channels.
+  - Applies a sensitivity adjustment and computes a weighted centroid for line position.
+
+- **Bumper (`bumper.py`):**
+  - Reads one or more digital bumper sensors.
+  - Provides functions to check for pressed sensors.
+
+- **Closed-Loop Controller (`closed_loop.py`):**
+  - Implements a PID algorithm for line following.
+  - Primarily used as a proportional controller with possible tuning of integral and derivative gains.
+
+### Shared Variables
+
+- **Encoder Data:**  
+  - `left_encoder_count`, `right_encoder_count` store cumulative counts.
+  - `left_velocity`, `right_velocity` store the computed velocities.
+- **Motor Commands:**  
+  - `left_motor_command` and `right_motor_command` hold the latest motor effort values.
+- **IR Sensor Centroid:**  
+  - `ir_line_centroid` holds the computed weighted average (line position).
+- **Switch State:**  
+  - `switch_state` toggles between 0 (Stopped) and 1 (Running).
+
+### Task Scheduler
+
+All tasks are organized in a cooperative multitasking system where each task periodically yields control. The scheduler runs tasks based on priorities and timing constraints defined by each task's period.
 
 
 ## Finite State Machines (FSMs)
