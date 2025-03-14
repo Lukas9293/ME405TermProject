@@ -216,7 +216,7 @@ All tasks are organized in a cooperative multitasking system where each task per
 
 
 flowchart LR
-  %% Sensor Subsystem
+  %% Sensors
   subgraph Sensors
     A[Left Encoder]
     B[Right Encoder]
@@ -225,13 +225,13 @@ flowchart LR
     E[Switch Button]
   end
 
-  %% Hardware Drivers
+  %% Drivers
   subgraph Drivers
     F[Left Motor Driver]
     G[Right Motor Driver]
   end
 
-  %% Task Subsystem
+  %% Tasks
   subgraph Tasks
     H[Encoder Task Left]
     I[Encoder Task Right]
@@ -245,55 +245,36 @@ flowchart LR
 
   %% Shared Variables
   subgraph SharedVars
-    P[left_encoder_count / left_velocity]
-    Q[right_encoder_count / right_velocity]
-    R[ir_line_centroid]
-    S[left_motor_command / right_motor_command]
-    T[switch_state]
+    P[Left Encoder Count/Velocity]
+    Q[Right Encoder Count/Velocity]
+    R[IR Line Centroid]
+    S[Motor Commands]
+    T[Switch State]
   end
 
-  %% Data Flow Connections
-  %% Encoders to their tasks, then to shared variables
+  %% Connections
   A --> H
   B --> I
   H --> P
   I --> Q
 
-  %% IR Sensor to IR Task, then shared variable
   C --> J
   J --> R
 
-  %% Switch Button to Switch Task, then shared variable
   E --> M
   M --> T
 
-  %% Closed-Loop Task takes inputs from shared variables (encoders, IR, switch)
   P & Q & R & T --> K
-  %% Closed-Loop Task outputs motor commands to shared variable
   K --> S
 
-  %% Motor Control Tasks read motor command shared variable
   S --> N
   S --> O
-
-  %% Motor Control Tasks drive motor drivers
   N --> F
   O --> G
 
-  %% Bumper Sensors and Task: bumper task monitors sensors and can override motor commands
   D --> L
   L --> S
 
-  %% Scheduler oversees all tasks
-  classDef scheduler fill:#f0f0f0,stroke:#333,stroke-width:1px;
-  H:::scheduler
-  I:::scheduler
-  J:::scheduler
-  K:::scheduler
-  L:::scheduler
-  M:::scheduler
-  N:::scheduler
-  O:::scheduler
 
 
 ## Finite State Machines (FSMs)
