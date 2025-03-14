@@ -395,6 +395,11 @@ The switch task monitors the blue button to toggle the robot's operational state
   - **Action:** Normal operation with active closed-loop control.
   - **Transition:** On button press, toggle back to Stopped.
 
+
+The encoder tasks, IR sensor task, and motor control tasks are not shown here because they are not FSMs. This is because they perform a single, repetitive operation rather than switching between multiple states. For example, the encoder tasks simply read sensor values to update encoder counts and velocities in a continuous loop—they don’t have distinct states that change based on conditional logic. Similarly, the IR sensor task continuously reads the eight analog channels, computes the centroid, and updates a shared variable without transitioning between different operational modes. The motor control tasks operate in much the same way: they read the current motor command from a shared variable and adjust the PWM output accordingly, all within an infinite loop that doesn’t incorporate state-dependent behavior. In contrast, FSM tasks like the closed-loop or bumper tasks have multiple states with specific entry conditions, transitions, and actions tailored to different parts of the course or collision recovery scenarios. These FSMs use conditional checks to move between states, while the tasks mentioned above consistently perform their single function without any internal state changes.
+
+
+
 ## Using our Code
 
 1. **Hardware Setup:**  
