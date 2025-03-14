@@ -163,6 +163,7 @@ All tasks are organized in a cooperative multitasking system where each task per
 ## Finite State Machines (FSMs)
 
 ### 1. Closed-Loop Task FSM (Line-Following Sections)
+![image](https://github.com/user-attachments/assets/61969081-0c84-44f8-ae0a-d0ebd55d8d29)
 
 This task divides the robot’s journey into sections based on elapsed left encoder ticks. Each section corresponds to a state with its own set of motor commands and PID tuning:
 
@@ -240,6 +241,7 @@ This task divides the robot’s journey into sections based on elapsed left enco
   - **Action:** Set both motor commands to 0 (stop the robot).
 
 ### 2. Bumper Task FSM (Backup Maneuver)
+![image](https://github.com/user-attachments/assets/166881b6-3cb9-496e-a63e-25af21eda6c5)
 
 The bumper task monitors the bumper sensors and the encoder velocities:
 
@@ -258,6 +260,7 @@ The bumper task monitors the bumper sensors and the encoder velocities:
   - **Transition:** After 300 ms, clear the backup flag, reset motor commands to 0, and return to Normal Operation.
 
 ### 3. Switch Task FSM (Operational State Toggle)
+![image](https://github.com/user-attachments/assets/b14c8f5c-7003-4bb9-8f47-f850b90a49c6)
 
 The switch task monitors a button to toggle the robot's operational state:
 
