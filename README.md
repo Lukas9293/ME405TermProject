@@ -214,6 +214,88 @@ The Romi robot follows a differential drive kinematics model, where its motion i
 
 All tasks are organized in a cooperative multitasking system where each task periodically yields control. The scheduler runs tasks based on priorities and timing constraints defined by each task's period.
 
+
+flowchart LR
+  %% Sensor Subsystem
+  subgraph Sensors
+    A[Left Encoder]
+    B[Right Encoder]
+    C[IR Sensor Array]
+    D[Bumper Sensors]
+    E[Switch Button]
+  end
+
+  %% Hardware Drivers
+  subgraph Drivers
+    F[Left Motor Driver]
+    G[Right Motor Driver]
+  end
+
+  %% Task Subsystem
+  subgraph Tasks
+    H[Encoder Task Left]
+    I[Encoder Task Right]
+    J[IR Sensor Task]
+    K[Closed-Loop Task]
+    L[Bumper Task]
+    M[Switch Task]
+    N[Motor Control Task Left]
+    O[Motor Control Task Right]
+  end
+
+  %% Shared Variables
+  subgraph SharedVars
+    P[left_encoder_count / left_velocity]
+    Q[right_encoder_count / right_velocity]
+    R[ir_line_centroid]
+    S[left_motor_command / right_motor_command]
+    T[switch_state]
+  end
+
+  %% Data Flow Connections
+  %% Encoders to their tasks, then to shared variables
+  A --> H
+  B --> I
+  H --> P
+  I --> Q
+
+  %% IR Sensor to IR Task, then shared variable
+  C --> J
+  J --> R
+
+  %% Switch Button to Switch Task, then shared variable
+  E --> M
+  M --> T
+
+  %% Closed-Loop Task takes inputs from shared variables (encoders, IR, switch)
+  P & Q & R & T --> K
+  %% Closed-Loop Task outputs motor commands to shared variable
+  K --> S
+
+  %% Motor Control Tasks read motor command shared variable
+  S --> N
+  S --> O
+
+  %% Motor Control Tasks drive motor drivers
+  N --> F
+  O --> G
+
+  %% Bumper Sensors and Task: bumper task monitors sensors and can override motor commands
+  D --> L
+  L --> S
+
+  %% Scheduler oversees all tasks
+  classDef scheduler fill:#f0f0f0,stroke:#333,stroke-width:1px;
+  H:::scheduler
+  I:::scheduler
+  J:::scheduler
+  K:::scheduler
+  L:::scheduler
+  M:::scheduler
+  N:::scheduler
+  O:::scheduler
+
+
 ## Finite State Machines (FSMs)
 
 ### 1. Closed-Loop Task FSM (Line-Following Sections)
