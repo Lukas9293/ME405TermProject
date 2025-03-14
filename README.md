@@ -91,6 +91,7 @@ Our wiring approach assigns distinct microcontroller pins to each subsystem to e
 ![image](https://github.com/user-attachments/assets/a2598f44-e3f5-4b4b-866d-a08db7cbd40b)
 
 Our robot had to autonomously navigate a complex race track that featured multiple checkpoints, a start/finish line, a wall, and a structure outlined in the grid. The challenge was set up as a time trial where hitting each checkpoint in sequence was essential, and strategically placed cups offered a bonus—knocking a cup over would subtract 5 seconds from our total time. Our goal was to secure the bonus from both cups and get to the finish line as fast as possible. In addition to these elements, the structure on the track required the robot to precisely maneuver through various turns and corridors, adding an extra layer of difficulty to the competition.
+![image](https://github.com/user-attachments/assets/0e382192-eba4-4a8d-819b-5f47ed9c24a0)
 
 ## What's Unique about Our Design?
 
