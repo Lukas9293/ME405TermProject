@@ -11,7 +11,8 @@ Our Romi robot integrates multiple subsystems, including:
 - **Closed-Loop Control** using a PID-based system for accurate path correction.  
 - **Task-Based Multitasking** for efficient coordination between system components.  
 
-INSERT PHOTO OF ROMI HERE
+![IMG_3669](https://github.com/user-attachments/assets/339b1c56-fe0c-4d0a-b4aa-51e809c6a126)
+
 
 This repository includes our full **codebase**, **circuit diagrams**, **state machine logic**, and **test results**. Below, you’ll find a structured breakdown of our implementation, challenges, and optimizations.  
 
