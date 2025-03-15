@@ -452,7 +452,7 @@ The encoder tasks, IR sensor task, and motor control tasks are not shown here be
    - Make any necessary calibration adjustments for the IR sensor (calibration_min and calibration_max values).
 
 3. **Running the Project:**  
-   - Reset or run the main project file (e.g., `V9_modificationofV7postV8shitstorm.py`).
+   - Reset or run the main project file (e.g., `mainV7wbutton.py`).
    - Use the physical button (on pin C13) to toggle between the Running and Stopped states.
 
 ## Conclusion and Results
