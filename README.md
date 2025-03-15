@@ -419,20 +419,21 @@ stateDiagram-v2
 
 Our "mastermind" FSM serves as the central control mechanism that governs transitions between the three primary FSM tasks: closed-loop, bumper, and switch. It continuously evaluates key inputs—such as IR sensor data, encoder readings, bumper activations, and the switch state—and makes real-time decisions about which subsystem should control the robot at any given moment. This design allows the system to fluidly switch among normal line following (closed-loop), collision recovery (bumper), and operational toggling (switch) based on the prevailing conditions, ensuring that the robot adapts quickly and appropriately to dynamic environments.
 
-- **State 1: Normal/Closed-Loop State**
+- **State 1: Switch (Operational Toggle) State**
+  - **Condition:** Initiated when the physical switch is pressed, toggling the robot’s operational status.
+  - **Action:** Toggle the operational mode (from Running to Stopped or vice versa) and update shared states such as resetting the encoder baseline.
+  - **Transition:** Depending on other sensor inputs after the toggle, the FSM may transition to either the closed-loop state for normal operation or to the bumper state if an immediate recovery is required.
+
+- **State 2: Normal/Closed-Loop State**
   - **Condition:** When sensor readings (IR, encoder) indicate normal line-following with no collision or stop command.
   - **Action:** Maintain standard PID-based corrections to keep the robot on course.
   - **Transition:** If a bumper activation or a significant deviation is detected, switch to the Bumper FSM; if a switch event occurs, transition to the Switch FSM.
 
-- **State 2: Bumper Recovery State**
+- **State 3: Bumper Recovery State**
   - **Condition:** Triggered when any bumper sensor is activated or when a stall (low velocity with active commands) is detected.
   - **Action:** Override closed-loop control to execute a backup maneuver, compute turn offsets based on sensor inputs, and steer away from obstacles.
   - **Transition:** Once the recovery maneuver is complete or the bumper condition clears, transition back to the closed-loop state or, if the switch has been toggled, move to the Switch FSM.
 
-- **State 3: Switch (Operational Toggle) State**
-  - **Condition:** Initiated when the physical switch is pressed, toggling the robot’s operational status.
-  - **Action:** Toggle the operational mode (from Running to Stopped or vice versa) and update shared states such as resetting the encoder baseline.
-  - **Transition:** Depending on other sensor inputs after the toggle, the FSM may transition to either the closed-loop state for normal operation or to the bumper state if an immediate recovery is required.
 
 This hierarchical control strategy, where the mastermind FSM can trigger transitions among all subsystems, ensures that our robot consistently adapts to its environment while maintaining robust performance throughout its operation.
 
