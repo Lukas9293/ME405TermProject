@@ -400,20 +400,20 @@ The switch task monitors the blue button to toggle the robot's operational state
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Init
-    Init --> Switch : Initialize
-    Switch --> ClosedLoop : Toggle to Running\n(normal conditions)
-    Switch --> Bumper : Toggle to Running\n(immediate recovery)
-    ClosedLoop --> Bumper : Bumper activation\nor stall detected
-    ClosedLoop --> Switch : Switch pressed
-    Bumper --> ClosedLoop : Recovery complete\n(no bumper trigger)
-    Bumper --> Switch : Switch pressed
+    [*] --> S0 Init
+    S0 Init --> S1 Switch : Initialize
+    S1 Switch --> S2 ClosedLoop : Toggle to Running\n(normal conditions)
+    S1 Switch --> S3 Bumper : Toggle to Running\n(immediate recovery)
+    S2 ClosedLoop --> S3 Bumper : Bumper activation\nor stall detected
+    S2 ClosedLoop --> S1 Switch : Switch pressed
+    S3 Bumper --> S2 ClosedLoop : Recovery complete\n(no bumper trigger)
+    S3 Bumper --> S1 Switch : Switch pressed
 
     %% Elliptical styling with no background color
-    style Init fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
-    style Switch fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
-    style ClosedLoop fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
-    style Bumper fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style S0 Init fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style S1 Switch fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style S2 ClosedLoop fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
+    style S3 Bumper fill:none,stroke:#333,stroke-width:2px,rx:30,ry:30
 
 ```
 
