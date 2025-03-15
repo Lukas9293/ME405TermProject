@@ -369,14 +369,14 @@ Notably one of the problems we had was the marriage of the bumper fsm and the cl
 
 The bumper task monitors the bumper sensors and the encoder velocities. Depending on which bumper is pressed, the bumper task activates, reverses, and adds a wheel offset. If a far left bumper is pressed the robot will reverse and make a slight adjustment to the right. If a center right bumper is pressed, it will reverse, and make a large adjustment to the left. Thus was mainly useful when navigating the structure, though this was active at all times. This state machine allowed us to navigate the course and the structure without our IMU, as it was not functional. We could enter the structure at irregular angles, and by bumping into pillars, we could course correct to get to the end of the structure. This was also useful when navigating the wall, as we already had our bumpers programmed, it was only a slight edit to make it hit the wall and go around it. It is detailed below.
 
-- **Normal Operation:**
+- **State 1: Normal Operation:**
   - **Action:** Continuously check:
     - If any bumper sensor is pressed.
     - If the robot’s velocity is below a threshold while nonzero motor commands are active.
   - **Transition:**  
     - If a bumper is pressed or the stationary condition persists for 2 seconds, set the `backup_active` flag to true and transition to the Backup Maneuver state.
 
-- **Backup Maneuver:**
+- **State 2: Backup Maneuver:**
   - **Action:**  
     - Compute a turning offset based on which bumper sensor(s) are activated.
     - Override normal motor commands by applying a fixed backup effort (e.g., 30) adjusted with the computed offset.
@@ -388,11 +388,11 @@ The bumper task monitors the bumper sensors and the encoder velocities. Dependin
 
 The switch task monitors the blue button to toggle the robot's operational state. When it was pressed it would start at state 1 above by reseting the encoder ticks. If it was pressed again it would stop the motors. This made it easy to reset the robot and the code between different attempts. The switch task states are detailed below.
 
-- **Stopped (switch_state = 0):**
+- **State 1: Stopped (switch_state = 0):**
   - **Action:** Robot remains inactive (closed-loop task forces motor commands to 0).
   - **Transition:** On button press, switch to Running state and update the encoder baseline.
 
-- **Running (switch_state = 1):**
+- **State 2: Running (switch_state = 1):**
   - **Action:** Normal operation with active closed-loop control.
   - **Transition:** On button press, toggle back to Stopped.
 
@@ -419,17 +419,17 @@ stateDiagram-v2
 
 Our "mastermind" FSM serves as the central control mechanism that governs transitions between the three primary FSM tasks: closed-loop, bumper, and switch. It continuously evaluates key inputs—such as IR sensor data, encoder readings, bumper activations, and the switch state—and makes real-time decisions about which subsystem should control the robot at any given moment. This design allows the system to fluidly switch among normal line following (closed-loop), collision recovery (bumper), and operational toggling (switch) based on the prevailing conditions, ensuring that the robot adapts quickly and appropriately to dynamic environments.
 
-- **Mastermind FSM: Normal/Closed-Loop State**
+- **State 1: Normal/Closed-Loop State**
   - **Condition:** When sensor readings (IR, encoder) indicate normal line-following with no collision or stop command.
   - **Action:** Maintain standard PID-based corrections to keep the robot on course.
   - **Transition:** If a bumper activation or a significant deviation is detected, switch to the Bumper FSM; if a switch event occurs, transition to the Switch FSM.
 
-- **Mastermind FSM: Bumper Recovery State**
+- **State 2: Bumper Recovery State**
   - **Condition:** Triggered when any bumper sensor is activated or when a stall (low velocity with active commands) is detected.
   - **Action:** Override closed-loop control to execute a backup maneuver, compute turn offsets based on sensor inputs, and steer away from obstacles.
   - **Transition:** Once the recovery maneuver is complete or the bumper condition clears, transition back to the closed-loop state or, if the switch has been toggled, move to the Switch FSM.
 
-- **Mastermind FSM: Switch (Operational Toggle) State**
+- **State 3: Switch (Operational Toggle) State**
   - **Condition:** Initiated when the physical switch is pressed, toggling the robot’s operational status.
   - **Action:** Toggle the operational mode (from Running to Stopped or vice versa) and update shared states such as resetting the encoder baseline.
   - **Transition:** Depending on other sensor inputs after the toggle, the FSM may transition to either the closed-loop state for normal operation or to the bumper state if an immediate recovery is required.
